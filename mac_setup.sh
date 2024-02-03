@@ -9,21 +9,29 @@ killall Dock
 
 # uses https://gist.github.com/bradp/bea76b16d3325f5c47d4 as a starting point
 # install xcode things
-xcode-select --install
+xcode-select --install &>/dev/null
+
+# Wait until XCode Command Line Tools installation has finished.
+until $(xcode-select --print-path &>/dev/null); do
+	sleep 5
+done
+
 # enable developer mode allows debugger authorization once per session instead of per use
 # sudo /usr/sbin/DevToolsSecurity -enable
 # sudo dscl . append /Groups/_developer GroupMembership $(whoami)
 
 # install homebrew and update note this location is for apple silicon
-curl -LJO https://github.com/Homebrew/brew/releases/download/4.2.4/Homebrew-4.2.4.pkg
-shasum Homebrew-4.2.4.pkg >/tmp/homebrewchecksum
-diff /tmp/homebrewchecksum homebrewchecksum
-error=$?
-if [ $error -ne 0 ]; then
-	echo "Homebrew did not pass checksum, exiting."
-	exit 1
-fi
-installer -pkg Homebrew-4.2.4.pkg /opt/homebrew
+# screw it curl bash for now
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+#curl -LJO https://github.com/Homebrew/brew/releases/download/4.2.4/Homebrew-4.2.4.pkg
+#shasum Homebrew-4.2.4.pkg >/tmp/homebrewchecksum
+#diff /tmp/homebrewchecksum homebrewchecksum
+#error=$?
+#if [ $error -ne 0 ]; then
+#	echo "Homebrew did not pass checksum, exiting."
+#	exit 1
+#fi
+#installer -pkg Homebrew-4.2.4.pkg /opt
 brew update
 brew install git
 # configure git
@@ -44,6 +52,8 @@ brew install fd
 brew install go
 brew install delve
 
+brew install rust
+
 brew install nmap
 brew install netcat
 # install go-sec and govulncheck
@@ -54,7 +64,8 @@ go install golang.org/x/vuln/cmd/govulncheck@latest
 go install golang.org/x/tools/gopls@latest
 
 brew install python
-pip install virtualenv
+python -m ensurepip --upgrade
+pip3 install virtualenv
 
 brew install awscli
 brew install kubernetes-cli
@@ -69,8 +80,8 @@ shasum install.sh >/tmp/ohmyzshchecksum
 diff /tmp/ohmyzshchecksum ohmyzshchecksum
 error=$?
 if [ $error -ne 0 ]; then
-        echo "Ohmyzsh did not pass checksum, exiting."
-        exit 1
+	echo "Ohmyzsh did not pass checksum, exiting."
+	exit 1
 fi
 
 apps=(
