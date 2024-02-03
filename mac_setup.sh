@@ -52,7 +52,8 @@ brew install fd
 brew install go
 brew install delve
 
-brew install rust
+brew install rustup
+rustup-init -y
 
 brew install nmap
 brew install netcat
