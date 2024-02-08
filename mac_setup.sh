@@ -85,6 +85,8 @@ if [ $error -ne 0 ]; then
 	exit 1
 fi
 
+brew install spotify
+
 apps=(
 	firefox
 	google-chrome
