@@ -43,6 +43,7 @@ brew tap homebrew/cask-fonts && brew install --cask font-fira-code-nerd-font
 brew install wget
 brew install curl
 brew install jq
+brew install yq
 
 brew install neovim
 brew install gcc
@@ -113,3 +114,4 @@ brew cleanup
 mkdir ~/.config
 cp -R ./.config/nvim ~/.config/
 cp ./dotfiles/* ~/
+mkdir ~/.bin
