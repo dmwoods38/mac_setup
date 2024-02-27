@@ -69,12 +69,16 @@ brew install python
 python -m ensurepip --upgrade
 pip3 install virtualenv
 
+# need node for various mason/neovim things
+brew install node
+
 brew install awscli
 brew install kubernetes-cli
 brew install kubernetes-helm
 brew install terraform
 brew install docker
 brew install docker-completion
+brew install c7n
 
 # install oh-my-zsh
 curl -LJO https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh
