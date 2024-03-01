@@ -79,6 +79,7 @@ brew install terraform
 brew install docker
 brew install docker-completion
 brew install c7n
+brew install lazygit
 
 # install oh-my-zsh
 curl -LJO https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh
