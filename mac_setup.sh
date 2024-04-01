@@ -46,6 +46,7 @@ brew install jq
 brew install yq
 
 brew install neovim
+brew install virtual-studio-code
 brew install gcc
 brew install ripgrep
 brew install fd
