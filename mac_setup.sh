@@ -77,6 +77,7 @@ brew install node
 brew install awscli
 brew install kubernetes-cli
 brew install kubernetes-helm
+brew install k9s
 brew install terraform
 brew install pulumi
 brew install docker
